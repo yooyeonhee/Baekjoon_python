@@ -1,0 +1,42 @@
+"""
+예전에는 운영체제에서 크로아티아 알파벳을 입력할 수가 없었다. 따라서, 다음과 같이 크로아티아 알파벳을 변경해서 입력했다.
+
+크로아티아 알파벳	변경
+č	c=
+ć	c-
+dž	dz=
+đ	d-
+lj	lj
+nj	nj
+š	s=
+ž	z=
+예를 들어, ljes=njak은 크로아티아 알파벳 6개(lj, e, š, nj, a, k)로 이루어져 있다. 단어가 주어졌을 때, 몇 개의 크로아티아 알파벳으로 이루어져 있는지 출력한다.
+
+dž는 무조건 하나의 알파벳으로 쓰이고, d와 ž가 분리된 것으로 보지 않는다. lj와 nj도 마찬가지이다. 위 목록에 없는 알파벳은 한 글자씩 센다.
+"""
+
+ch = ["c=","c-","d-","lj","nj","s=","z="]
+ach = ["c","d","l","n","s","z"]
+word = input()
+num = 0
+while len(word)>0:
+    if word[0] not in ach:
+        num = num+1
+        word = word[1:]
+        continue
+    else:
+        if word[0:2] in ch:
+            num = num + 1
+            word = word[2:]
+            continue
+        if word[0:3]=="dz=":
+            num = num + 1
+            word = word[3:]
+            continue
+        else:
+            num = num+1
+            word = word[1:]
+            continue
+print(num)
+
+
